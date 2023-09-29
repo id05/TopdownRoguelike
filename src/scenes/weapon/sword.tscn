@@ -1,0 +1,369 @@
+[gd_scene load_steps=15 format=3 uid="uid://bcupt8vjbu6ux"]
+
+[ext_resource type="Script" path="res://src/scenes/weapon/sword.gd" id="1_v0lc1"]
+[ext_resource type="Script" path="res://src/nodes/weapon_trail.gd" id="2_gdw31"]
+[ext_resource type="Texture2D" uid="uid://dm5hrr5gevfki" path="res://art/sprites/Weapons/Hands/Hands.png" id="3_jsdex"]
+[ext_resource type="Texture2D" uid="uid://b5f10l3u6frga" path="res://art/sprites/Weapons/Wood/Wood.png" id="4_6lbej"]
+[ext_resource type="Script" path="res://src/nodes/hitbox.gd" id="5_hveo2"]
+
+[sub_resource type="Curve" id="Curve_07syy"]
+_data = [Vector2(0, 0.421053), 0.0, 0.0, 0, 0, Vector2(0.509202, 0.936842), 0.0, 0.0, 0, 0, Vector2(1, 0.368421), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_817qk"]
+atlas = ExtResource("3_jsdex")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlopu"]
+atlas = ExtResource("4_6lbej")
+region = Rect2(0, 0, 16, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxjcc"]
+size = Vector2(61, 28.5)
+
+[sub_resource type="Animation" id="Animation_vfh1b"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrailMarker:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-19, -46)]
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Hand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -24)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBox/CollisionShape2D:shape:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(61, 28.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBox/CollisionShape2D:shape")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_bxjcc")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k6rma"]
+_data = {
+"RESET": SubResource("Animation_vfh1b")
+}
+
+[sub_resource type="Animation" id="Animation_k80nl"]
+length = 0.4
+step = 0.025
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.125, -1.61435, -8, -0.0453444, -2.62898, 0.0804712, 4.92944, 8, -0.0426501, 2.03532, 0.06375, -2.21845, 0, -0.11125, 1.82726, 0.25, 0),
+"times": PackedFloat32Array(0, 0.15, 0.225, 0.4)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.027569, -2.85466, -0.0475078, -0.0284812, -2.9943, 0.0525926, 5.80742, 0, -0.0669166, 5.64701, 0.25, 0),
+"times": PackedFloat32Array(0, 0.15, 0.225, 0.4)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrailMarker:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-19, -46), Vector2(0, -48)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Trail")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.15, 0.210535, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"setup"
+}, {
+"args": [6],
+"method": &"draw_bezier"
+}, {
+"args": [],
+"method": &"clear_points"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.15, 0.225),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enable"
+}, {
+"args": [],
+"method": &"disable"
+}]
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hand:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.1, -0.0889641, -0.785397, -0.0291769, -1.02661, 0.0149139, 0.57748, 0.785398, -0.022431, 0.450365, 0.0498241, -0.33122, 0, -0.0751759, 0.368993, 0.157593, 0.266877),
+"times": PackedFloat32Array(0, 0.15, 0.225, 0.4)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBox:position")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -24)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HitBox/CollisionShape2D:shape:size")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.15),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(61, 28.5)]
+}
+
+[sub_resource type="Animation" id="Animation_04qe0"]
+length = 0.3
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hand:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hand:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.0479927, 2.20019, 14, -0.0207926, 0.862231, 0.0404664, -2.10543, -10, -0.079433, -2.63813, 0.0493279, -0.461843, 0, -0.0463801, -0.371782, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TrailMarker:position")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -27), Vector2(0, -67)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Trail")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1, 0.2, 0.240679),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"setup"
+}, {
+"args": [3],
+"method": &"draw_bezier"
+}, {
+"args": [],
+"method": &"clear_points"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBox:position")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, -27)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBox/CollisionShape2D:shape")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_bxjcc")]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBox")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enable"
+}, {
+"args": [],
+"method": &"disable"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2qy7j"]
+_data = {
+"cut": SubResource("Animation_k80nl"),
+"thrust": SubResource("Animation_04qe0")
+}
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_v0lc1")
+base_damage = 3
+
+[node name="TrailMarker" type="Node2D" parent="."]
+position = Vector2(-19, -46)
+
+[node name="Trail" type="Line2D" parent="." node_paths=PackedStringArray("middle_marker", "weapon_marker")]
+texture_filter = 2
+width_curve = SubResource("Curve_07syy")
+joint_mode = 1
+antialiased = true
+script = ExtResource("2_gdw31")
+middle_marker = NodePath("../TrailMarker")
+weapon_marker = NodePath("../Hand/TrailMarker")
+metadata/_edit_lock_ = true
+
+[node name="Hand" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_817qk")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Hand"]
+z_index = -1
+position = Vector2(0, -15)
+texture = SubResource("AtlasTexture_xlopu")
+
+[node name="TrailMarker" type="Node2D" parent="Hand"]
+position = Vector2(-9.77397e-05, -27)
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(0, -24)
+script = ExtResource("5_hveo2")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_bxjcc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k6rma"),
+"Sword": SubResource("AnimationLibrary_2qy7j")
+}

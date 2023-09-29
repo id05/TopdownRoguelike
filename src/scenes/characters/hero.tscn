@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b686764eb7khq"]
+
+[ext_resource type="Script" path="res://src/scenes/characters/hero.gd" id="1_isomy"]
+[ext_resource type="SpriteFrames" uid="uid://msk0jkmff7c0" path="res://art/sprites/Heroes/Knight/spirte_frames.tres" id="2_qqmru"]
+[ext_resource type="PackedScene" uid="uid://1nqno4v0uaij" path="res://src/scenes/hands/hands.tscn" id="3_5qy5l"]
+[ext_resource type="Script" path="res://src/nodes/hurtbox.gd" id="4_170gd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4rx0f"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6v1w"]
+radius = 7.0
+
+[node name="Hero" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_isomy")
+max_health = 2
+max_speed = 100.0
+max_acc = 1000.0
+friction = 5.0
+metadata/_edit_horizontal_guides_ = []
+metadata/_edit_vertical_guides_ = [-7.0, 8.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -27)
+sprite_frames = ExtResource("2_qqmru")
+animation = &"run"
+frame_progress = 0.0827408
+
+[node name="Hands" parent="." instance=ExtResource("3_5qy5l")]
+position = Vector2(0, -7)
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("4_170gd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -9)
+shape = SubResource("CapsuleShape2D_4rx0f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_h6v1w")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -63.0
+offset_top = -68.0
+offset_right = 63.0
+offset_bottom = -42.0
+text = "speed: %s pixels"
